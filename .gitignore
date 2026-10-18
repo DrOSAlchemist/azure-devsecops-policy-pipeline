@@ -1,0 +1,16 @@
+.copilot-azure/
+.env
+.env.*
+!.env.example
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.plan.json
+node_modules/
+coverage/
+reports/
+*.sarif
+.DS_Store
+.tools/
+*.zip

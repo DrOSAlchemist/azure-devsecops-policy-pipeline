@@ -1,0 +1,14 @@
+{
+  "name": "azure-devsecops-policy-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Subscription-free DevSecOps reference implementation with tested Azure infrastructure templates.",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node src/server.js",
+    "check": "node --check src/server.js && node --check src/controls.js && node --check scripts/extract-plan.js && node --check tests/server.test.js && node --check tests/extract-plan.test.js",
+    "test": "node --test --experimental-test-coverage tests/*.test.js",
+    "audit": "npm audit --omit=dev --audit-level=high"
+  }
+}

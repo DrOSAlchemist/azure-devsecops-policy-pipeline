@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A tested, subscription-free DevSecOps reference project.">
+  <title>Policy before deployment | DevSecOps</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <nav aria-label="Project"><strong>DR OS ALCHEMIST / ENGINEERING</strong><a href="https://github.com/DrOSAlchemist/azure-devsecops-policy-pipeline">Source code &amp; CI evidence</a></nav>
+    <header>
+      <p class="eyebrow">DEVSECOPS REFERENCE IMPLEMENTATION</p>
+      <h1>Policy before<br>deployment.</h1>
+      <p class="lead">A delivery pipeline that tests the application, challenges infrastructure policy, and scans the image before accepting a release.</p>
+      <p class="notice">Code-only demonstration. No Azure subscription, cloud deployment, or compliance certification is claimed.</p>
+    </header>
+    <section aria-labelledby="pipeline">
+      <h2 id="pipeline">A layered delivery boundary</h2>
+      <div class="grid">
+        <article><span>01 / SOURCE</span><h3>Test the behavior</h3><p>Node.js syntax checks, HTTP regression tests, a locked dependency manifest, and dependency auditing.</p></article>
+        <article><span>02 / INFRASTRUCTURE</span><h3>Make policy executable</h3><p>Terraform mock-provider plans, Checkov configuration scanning, and tested OPA deny rules.</p></article>
+        <article><span>03 / SUPPLY CHAIN</span><h3>Inspect the artifact</h3><p>Trivy filesystem and container scanning, an SBOM, pinned workflow actions, and a non-root runtime.</p></article>
+        <article><span>04 / GOVERNANCE</span><h3>Keep claims honest</h3><p>Azure Policy definition and assignment templates. Optional authenticated Snyk checks. No automatic cloud deployment.</p></article>
+      </div>
+    </section>
+    <section class="boundary"><h2>Evidence over adjectives.</h2><p>Tests, policy fixtures, workflow logs and scan artifacts are the evidence. Scanner passes do not prove that an application is secure. Snyk needs external credentials; Azure templates have not been deployed.</p><a href="/api/controls">Read the control inventory (JSON)</a></section>
+    <footer>Built for reproducible learning. No personal data, trading records or account credentials.</footer>
+  </main>
+</body>
+</html>
