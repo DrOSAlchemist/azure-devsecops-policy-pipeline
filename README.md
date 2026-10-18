@@ -46,6 +46,8 @@ flowchart TD
 The application is deliberately small: a static engineering dashboard, `/healthz`
 and a read-only `/api/controls` inventory. There are no production dependencies,
 login flows, persistent user data or external service calls.
+The runtime image removes bundled npm/Yarn: they are not needed to execute this
+server. CI checks their absence before performing the independent image scan.
 
 ## Run the application locally
 

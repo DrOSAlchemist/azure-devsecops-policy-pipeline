@@ -65,3 +65,31 @@ trivy fs --scanners vuln,secret --severity HIGH,CRITICAL --exit-code 1 .
 Image builds are optional locally. CI builds an ephemeral image, tests it with a
 read-only filesystem/no capabilities, scans it, emits an SBOM and never pushes it.
 No cloud or website deployment procedure is included by design.
+
+## Initial image finding and mitigation
+
+The first successful container smoke test exposed four **high-severity** findings
+in the pinned Node image's bundled npm dependencies, not in application packages:
+
+| Package in bundled npm | Version | High-severity advisory |
+| --- | --- | --- |
+| brace-expansion | 5.0.9 | CVE-2026-102276, CVE-2026-102278 |
+| http-cache-semantics | 4.2.0 | CVE-2026-93748 |
+| undici | 6.28.0 | CVE-2026-19534 |
+
+The [retained failed run](https://github.com/DrOSAlchemist/azure-devsecops-policy-pipeline/actions/runs/39171500931)
+contains the original Trivy JSON. A corroborating GitHub-advisory dependency scan
+also reported two medium and one low advisory across those packages. This was a
+tool-based scan, not an inference that the server's own Node HTTP code is affected.
+
+Because this dependency-free server never installs packages at runtime, the
+Dockerfile removes the **entire bundled npm tree and unused Yarn installation**,
+including their launcher links. No advisory suppression, `ignore-unfixed` flag
+or scan soft-fail was added. CI asserts the package-manager paths are absent,
+tests the image and rescans its final filesystem. Future base-image updates
+must preserve those tests and still pass the independent Trivy gate.
+
+Removal narrows installed runtime attack surface; original base layers remain
+part of the image history. It is not a claim that the upstream base image was
+patched or that Node's built-in libraries have no vulnerabilities. Consult the
+latest run's SBOM and scan output for the current result.
