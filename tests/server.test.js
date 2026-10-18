@@ -26,11 +26,19 @@ test('health endpoint is minimal and sends security headers', async () => {
   });
 });
 
-test('home page describes boundaries, not fabricated cloud evidence', async () => {
+test('project page presents the engineering case study without changing its scope', async () => {
   await withServer({}, async (base) => {
     const response = await fetch(base);
     assert.equal(response.status, 200);
-    assert.match(await response.text(), /No Azure subscription/);
+    const html = await response.text();
+    assert.match(html, /<title>DevSecOps engineering notebook \| DrOSAlchemist<\/title>/);
+    assert.match(html, /I built this pipeline/);
+    assert.match(html, /No Azure subscription/);
+    assert.match(html, /does not deploy cloud resources/);
+    assert.match(html, /docs\/engineering\.md/);
+    assert.match(html, /actions\/runs\/39171713521/);
+    assert.match(html, /control inventory describes implementation scope, not live compliance/);
+    assert.doesNotMatch(html, /<script\b/i);
     const css = await fetch(`${base}/style.css`);
     assert.equal(css.status, 200);
     assert.match(css.headers.get('content-type'), /text\/css/);

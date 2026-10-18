@@ -5,6 +5,9 @@ main { max-width: 1150px; padding: 30px clamp(22px, 5vw, 70px); margin: auto; }
 nav { display: flex; justify-content: space-between; gap: 24px; font-size: .75rem; letter-spacing: .06em; padding-bottom: 30px; border-bottom: 1px solid #30443c; }
 a { color: #a5ebbf; text-underline-offset: 5px; }
 a:focus-visible { outline: 3px solid #f2cb72; outline-offset: 5px; }
+.brand { color: #e7f0ec; font-weight: 700; text-decoration: none; }
+.scope { color: #a5ebbf; font-size: .85rem; line-height: 1.8; }
+.links { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 24px; line-height: 1.7; }
 header { padding: 85px 0 65px; }
 .eyebrow, article span { color: #a5ebbf; font-size: .75rem; letter-spacing: .15em; }
 h1 { font-size: clamp(3.2rem, 8vw, 6rem); line-height: 1.02; letter-spacing: -.06em; margin: 24px 0; }
@@ -16,5 +19,5 @@ article { border: 1px solid #30443c; padding: 28px; border-radius: 10px; backgro
 article h3 { margin: 18px 0 12px; }
 article p, .boundary p { color: #b5c7bf; line-height: 1.7; }
 .boundary { margin-top: 40px; padding: 24px 0; }
-footer { border-top: 1px solid #30443c; padding: 28px 0; margin-top: 30px; color: #98afa3; font-size: .8rem; }
+footer { border-top: 1px solid #30443c; padding: 28px 0; margin-top: 30px; color: #98afa3; font-size: .8rem; line-height: 2; }
 @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } nav { flex-direction: column; } header { padding-top: 45px; } }
