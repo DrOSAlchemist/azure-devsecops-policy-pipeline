@@ -160,7 +160,7 @@ jobs:
           id=$(docker run -d --read-only --cap-drop=ALL --security-opt=no-new-privileges --pids-limit=100 -p 127.0.0.1:8080:8080 "$IMAGE")
           trap 'docker logs "$id"; docker stop "$id"' EXIT
           test "$(docker exec "$id" id -u)" != "0"
-          curl --fail --retry 12 --retry-delay 2 --retry-connrefused http://127.0.0.1:8080/healthz
+          curl --fail --max-time 5 --retry 12 --retry-delay 2 --retry-max-time 40 --retry-all-errors http://127.0.0.1:8080/healthz
       - uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
         with:
           version: v0.76.0
