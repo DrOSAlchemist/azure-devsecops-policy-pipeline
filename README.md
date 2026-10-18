@@ -2,11 +2,6 @@
 
 [![DevSecOps gates](https://github.com/DrOSAlchemist/azure-devsecops-policy-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/DrOSAlchemist/azure-devsecops-policy-pipeline/actions/workflows/ci.yml)
 
-A **code-only, subscription-free reference implementation** of application tests,
-policy-as-code and automated security scanning. Nothing here signs into Azure,
-creates resources, publishes container images, deploys applications or changes a
-website. GitHub Actions builds an ephemeral image **only to test and scan it**.
-
 ## Implementation summary
 
 Implemented a layered DevSecOps reference pipeline combining **Checkov**, **OPA**
