@@ -87,7 +87,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+      - uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # 0.36.0
         with:
           version: v0.76.0
           scan-type: fs
@@ -162,7 +162,7 @@ jobs:
           test "$(docker exec "$id" id -u)" != "0"
           docker exec "$id" node -e 'const fs=require("node:fs"); for(const p of ["/usr/local/lib/node_modules/npm","/opt/yarn-v1.22.22","/usr/local/bin/npm","/usr/local/bin/npx","/usr/local/bin/yarn","/usr/local/bin/yarnpkg"]) { if(fs.existsSync(p)) throw new Error(`Unexpected package manager: ${p}`); }'
           curl --fail --max-time 5 --retry 12 --retry-delay 2 --retry-max-time 40 --retry-all-errors http://127.0.0.1:8080/healthz
-      - uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+      - uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # 0.36.0
         with:
           version: v0.76.0
           image-ref: devsecops-demo:${{ github.sha }}
